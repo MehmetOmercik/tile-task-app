@@ -1,0 +1,14 @@
+# Folders
+*venv
+__pycache__
+
+# Configuration files and folders
+.vscode
+.idea
+.DS_Store
+.env
+.coverage
+
+# DB files
+*.sqlite3
+**.DS_Store
