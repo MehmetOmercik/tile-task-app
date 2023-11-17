@@ -1,5 +1,6 @@
 // import React from "react";
 import PropTypes from "prop-types";
+import { capitalise } from "../utils/helpers";
 
 export const Task = ({
   id = "null",
@@ -14,7 +15,7 @@ export const Task = ({
       <p>{title}</p>
       <p>{order}</p>
       <p>{description}</p>
-      <p>{type}</p>
+      <p>{capitalise(type)}</p>
     </section>
   );
 };
