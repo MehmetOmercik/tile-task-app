@@ -11,7 +11,46 @@
 
 body {
   margin: 0;
+}
+
+/* Overlay */
+.overlay__background {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  cursor: pointer;
+  z-index: 9;
+}
+.overlay__container {
+  background-color: gray;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  z-index: 10;
+  padding: 30px;
+  padding-top: 10px;
+  width: fit-content;
+  height: fit-content;
+}
+
+.overlay__controls {
   display: flex;
-  /* min-width: 320px;
-  min-height: 100vh;  */
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.overlay__close:after {
+  display: inline-block;
+  content: "\00d7";
+}
+
+.overlay__close {
+  border: none;
+  background-color: transparent;
+  font-size: 36px;
+  cursor: pointer;
 }
