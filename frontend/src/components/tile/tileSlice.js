@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { isoStringDateFunc } from "../../utils/helpers";
 
 const tileInitialState = {
   editTile: false,
   editTileObject: {
-    launchDate: "date",
-    status: "live",
+    launchDate: isoStringDateFunc(),
+    status: "",
   },
 };
 

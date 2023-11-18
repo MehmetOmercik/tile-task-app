@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export const DropdownComponent = ({ options, onSelect, defaultValue }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState(undefined);
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
@@ -9,14 +9,17 @@ export const DropdownComponent = ({ options, onSelect, defaultValue }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="">
       <select
         value={defaultValue ? defaultValue : selectedOption}
         onChange={(e) => handleOptionSelect(e.target.value)}
+        className="p-1 rounded-md mb-4"
       >
-        {/* <option value="">Select an option</option> */}
+        <option className="" value="">
+          Select an option
+        </option>
         {options.map((option, index) => (
-          <option key={index} value={option}>
+          <option className="" key={index} value={option}>
             {option}
           </option>
         ))}

@@ -7,3 +7,8 @@ export const formatDate = (inputDate) => {
   const formattedDate = `${date}/${month}/${year}`;
   return formattedDate;
 };
+
+export const isoStringDateFunc = (inputDate = new Date()) => {
+  const date = new Date(inputDate);
+  return date.toISOString().split("T")[0];
+};
