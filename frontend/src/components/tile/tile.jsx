@@ -5,10 +5,14 @@ import { useState } from "react";
 import trashCan from "../../assets/trashCan.svg";
 import editIcon from "../../assets/editIcon.svg";
 import { useDispatch } from "react-redux";
-import { updateEditTile, updateEditTileObject } from "./tileSlice";
+import {
+  updateCurrentTileID,
+  updateEditTile,
+  updateEditTileObject,
+} from "./tileSlice";
 
 export const Tile = ({
-  id = "null",
+  tileID = "null",
   launchDate = "null",
   status = "null",
   handleOverlay,
@@ -17,15 +21,17 @@ export const Tile = ({
 }) => {
   const [tileHover, setTileHover] = useState(false);
   const dispatch = useDispatch();
+
   const handleViewTasks = async () => {
-    const getTasksResponse = await getTasks(id);
+    const getTasksResponse = await getTasks(tileID);
     handleOverlay(); //Opens the overlay when viewing tasks
     setTasks(getTasksResponse); //Sets tasks on App.jsx
     setOverlaySection("tasks");
+    dispatch(updateCurrentTileID(tileID));
   };
 
   const handleEditTile = () => {
-    const tilePayload = { id, launchDate, status };
+    const tilePayload = { tileID, launchDate, status };
     console.log(tilePayload);
     handleOverlay();
     setOverlaySection("edit_tile");
@@ -36,7 +42,7 @@ export const Tile = ({
   };
 
   const handleDeleteTile = () => {
-    deleteTile(id);
+    deleteTile(tileID);
     window.location.reload();
   };
 
@@ -54,7 +60,7 @@ export const Tile = ({
       onMouseOut={() => {
         setTileHover(false);
       }}
-      className="border border-gray-600 rounded-xl w-[220px] h-[200px] text-center text-lg bg-white flex flex-col"
+      className="border border-gray-600 rounded-xl w-[220px] h-[210px] text-center text-lg bg-white flex flex-col"
     >
       <div
         className={`h-14 w-full rounded-t-xl ${
@@ -65,29 +71,29 @@ export const Tile = ({
         <div className="h-full flex flex-col justify-between">
           <button
             onClick={handleViewTasks}
-            className="text-red-700 bg-slate-300 hover:bg-slate-200 p-2 h-14"
+            className="text-red-700 bg-slate-300 hover:bg-slate-200 p-2 h-16"
           >
             View Tasks
           </button>
           <div className="flex justify-between px-6 mb-6">
             <img
               onClick={handleEditTile}
-              className="hover:cursor-pointer"
+              className="rounded-lg hover:cursor-pointer hover:bg-gray-200 p-2"
               src={editIcon}
-              width="40px"
+              width="60px"
             />
             <img
               onClick={handleDeleteTile}
-              className="hover:cursor-pointer"
+              className="rounded-lg hover:cursor-pointer hover:bg-gray-200 p-2"
               src={trashCan}
-              width="40px"
+              width="60px"
             />
           </div>
         </div>
       )}
       {!tileHover && (
         <div className="h-full flex flex-col justify-evenly">
-          <p>Tile {id}</p>
+          <p>Tile {tileID}</p>
           <div className="border " />
           <div className="flex justify-between px-4">
             <p>{formatDate(launchDate)}</p>
@@ -100,7 +106,7 @@ export const Tile = ({
 };
 
 Tile.propTypes = {
-  id: PropTypes.number,
+  tileID: PropTypes.number,
   launchDate: PropTypes.string,
   status: PropTypes.string,
   handleOverlay: PropTypes.func,

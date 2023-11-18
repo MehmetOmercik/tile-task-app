@@ -20,6 +20,7 @@ export const getTiles = async (status = "live") => {
   }
 };
 
+// CREATE Tile
 export const postTile = async (data = null) => {
   try {
     const response = await axios({
@@ -74,6 +75,21 @@ export const getTasks = async (tile_id = null) => {
         ordering: "order",
         tile_id: tile_id,
       },
+    });
+    return await response.data;
+  } catch (error) {
+    console.error("error in http request: ", error);
+  }
+};
+
+// CREATE Task
+export const postTask = async (data = null) => {
+  try {
+    const response = await axios({
+      method: "POST",
+      url: "/tasks/",
+      baseURL: backendUrl,
+      data: { ...data },
     });
     return await response.data;
   } catch (error) {

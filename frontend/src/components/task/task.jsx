@@ -1,6 +1,6 @@
 // import React from "react";
 import PropTypes from "prop-types";
-import { capitalise } from "../utils/helpers";
+import { capitalise } from "../../utils/helpers";
 
 export const Task = ({
   id = "null",

@@ -13,6 +13,7 @@ export const NewTile = () => {
   const { editTile: editTileBoolean, editTileObject } = useSelector(
     (state) => state.tile
   );
+  console.log(editTileObject);
 
   const handleProperty = (e) => {
     const isoStringDate = isoStringDateFunc(e);
@@ -38,20 +39,22 @@ export const NewTile = () => {
 
   const handleTileUpdateSubmisssion = (e) => {
     const tilePayload = {
-      id: editTileObject.id,
+      id: editTileObject.tileID,
       launch_date: editTileObject.launchDate,
       status: editTileObject.status,
     };
     // e.preventDefault();
     editTileBoolean
-      ? putTile(editTileObject.id, tilePayload)
+      ? putTile(editTileObject.tileID, tilePayload)
       : postTile(tilePayload);
   };
 
   return (
     <section className="bg-white  w-[300px] rounded-xl p-4">
       <h1 className="text-2xl mb-5">
-        {editTileBoolean ? "Update" : "Create"} Tile
+        {editTileBoolean
+          ? `Update Tile ${editTileObject.tileID}`
+          : "Create Tile"}
       </h1>
       <form onSubmit={(e) => handleTileUpdateSubmisssion(e)}>
         <label>Launch Date</label>

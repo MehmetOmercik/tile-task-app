@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Tile } from "./components/tile/tile";
 import { NewTile } from "./components/tile/newTile";
 
-import { TaskSlider } from "./components/taskSlider";
+import { TaskSlider } from "./components/task/taskSlider";
 import { getTiles } from "./utils/http";
 import { Overlay } from "./components/overlay";
 import { useDispatch } from "react-redux";
@@ -11,6 +11,7 @@ import {
   updateEditTileObject,
 } from "./components/tile/tileSlice";
 import { isoStringDateFunc } from "./utils/helpers";
+import { NewTask } from "./components/task/newTask";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ export default function App() {
   };
   const filterButtonStyle =
     "border p-4 border-red-700 bg-blue-400 rounded-2xl hover:bg-blue-200";
-
+  console.log(overlaySection);
   return (
     <>
       <button
@@ -89,7 +90,7 @@ export default function App() {
           return (
             <Tile
               key={tile.id}
-              id={tile.id}
+              tileID={tile.id}
               launchDate={tile.launch_date}
               status={tile.status}
               handleOverlay={handleOverlay}
@@ -98,10 +99,19 @@ export default function App() {
             />
           );
         })}
-        <Overlay isOpen={openOverlay} onClose={handleOverlay}>
+        <Overlay
+          isOpen={openOverlay}
+          onClose={handleOverlay}
+          overlaySection={overlaySection}
+          setOverlaySection={setOverlaySection}
+        >
           {overlaySection === "tasks" && <TaskSlider tasks={tasks} />}
+
           {(overlaySection === "edit_tile" ||
             overlaySection === "new_tile") && <NewTile />}
+
+          {(overlaySection === "edit_task" ||
+            overlaySection === "new_task") && <NewTask />}
         </Overlay>
       </div>
     </>
