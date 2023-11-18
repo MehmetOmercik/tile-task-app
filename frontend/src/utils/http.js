@@ -15,6 +15,27 @@ export const getTiles = async (status = "live") => {
   return await response.data;
 };
 
+// EDIT Tile
+export const editTile = async (tileID = null, data = null) => {
+  const response = await axios({
+    method: "PATCH",
+    url: `/tiles/${tileID}`,
+    baseURL: backendUrl,
+    data: { ...data },
+  });
+  return await response.data;
+};
+
+// DELETE Tile
+export const deleteTile = async (tileID = null) => {
+  const response = await axios({
+    method: "DELETE",
+    url: `/tiles/${tileID}`,
+    baseURL: backendUrl,
+  });
+  return await response.data;
+};
+
 // GET Tasks
 export const getTasks = async (tile_id = null) => {
   const response = await axios({

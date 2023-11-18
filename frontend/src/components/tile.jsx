@@ -1,13 +1,16 @@
 import PropTypes from "prop-types";
-import { getTasks } from "../utils/http";
-import { capitalise } from "../utils/helpers";
+import { deleteTile, getTasks } from "../utils/http";
+import { capitalise, formatDate } from "../utils/helpers";
 import { useState } from "react";
+import trashCan from "../assets/trashCan.svg";
+import editIcon from "../assets/editIcon.svg";
 
 export const Tile = ({
   id = "null",
   launchDate = "null",
   status = "null",
   handleOverlay,
+  setOverlaySection,
   setTasks,
 }) => {
   const [tileHover, setTileHover] = useState(false);
@@ -15,6 +18,17 @@ export const Tile = ({
     const getTasksResponse = await getTasks(id);
     handleOverlay(); //Opens the overlay when viewing tasks
     setTasks(getTasksResponse); //Sets tasks on App.jsx
+    setOverlaySection("tasks");
+  };
+
+  const handleEditTile = () => {
+    handleOverlay();
+    setOverlaySection("edit_tile");
+  };
+
+  const handleDeleteTile = () => {
+    deleteTile(id);
+    window.location.reload();
   };
 
   const statusMapColour = {
@@ -31,7 +45,7 @@ export const Tile = ({
       onMouseOut={() => {
         setTileHover(false);
       }}
-      className="border border-gray-600 rounded-xl w-[200px] h-[200px] text-center text-lg bg-white flex flex-col"
+      className="border border-gray-600 rounded-xl w-[220px] h-[200px] text-center text-lg bg-white flex flex-col"
     >
       <div
         className={`h-14 w-full rounded-t-xl ${
@@ -39,18 +53,37 @@ export const Tile = ({
         }`}
       ></div>
       {tileHover && (
-        <button
-          onClick={handleViewTasks}
-          className="text-red-700 bg-slate-300 hover:bg-slate-200 p-2 "
-        >
-          View Tasks
-        </button>
+        <div className="h-full flex flex-col justify-between">
+          <button
+            onClick={handleViewTasks}
+            className="text-red-700 bg-slate-300 hover:bg-slate-200 p-2 h-14"
+          >
+            View Tasks
+          </button>
+          <div className="flex justify-between px-6 mb-6">
+            <img
+              onClick={handleEditTile}
+              className="hover:cursor-pointer"
+              src={editIcon}
+              width="40px"
+            />
+            <img
+              onClick={handleDeleteTile}
+              className="hover:cursor-pointer"
+              src={trashCan}
+              width="40px"
+            />
+          </div>
+        </div>
       )}
       {!tileHover && (
         <div className="h-full flex flex-col justify-evenly">
           <p>Tile {id}</p>
-          <p>{launchDate}</p>
-          <p>{capitalise(status)}</p>
+          <div className="border " />
+          <div className="flex justify-between px-4">
+            <p>{formatDate(launchDate)}</p>
+            <p>{capitalise(status)}</p>
+          </div>
         </div>
       )}
     </section>
@@ -62,5 +95,6 @@ Tile.propTypes = {
   launchDate: PropTypes.string,
   status: PropTypes.string,
   handleOverlay: PropTypes.func,
+  setOverlaySection: PropTypes.func,
   setTasks: PropTypes.func,
 };

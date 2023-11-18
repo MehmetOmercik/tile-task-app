@@ -3,12 +3,14 @@ import { Tile } from "./components/tile";
 import { TaskSlider } from "./components/taskSlider";
 import { getTiles } from "./utils/http";
 import { Overlay } from "./components/overlay";
+import { NewTile } from "./components/newTile";
 
 export default function App() {
   const [tiles, setTiles] = useState([]);
   const [tileStatus, setTileStatus] = useState("live");
   const [tasks, setTasks] = useState([]);
   const [openOverlay, setOpenOverlay] = useState(false);
+  const [overlaySection, setOverlaySection] = useState(null);
 
   useEffect(() => {
     const handleMount = async () => {
@@ -62,12 +64,14 @@ export default function App() {
               launchDate={tile.launch_date}
               status={tile.status}
               handleOverlay={handleOverlay}
+              setOverlaySection={setOverlaySection}
               setTasks={setTasks}
             />
           );
         })}
         <Overlay isOpen={openOverlay} onClose={handleOverlay}>
-          <TaskSlider tasks={tasks} />
+          {overlaySection === "tasks" && <TaskSlider tasks={tasks} />}
+          {overlaySection === "edit_tile" && <NewTile />}
         </Overlay>
       </div>
     </>
