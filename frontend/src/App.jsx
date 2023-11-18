@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { Tile } from "./components/tile";
+import { Tile } from "./components/tile/tile";
+import { NewTile } from "./components/tile/newTile";
+
 import { TaskSlider } from "./components/taskSlider";
 import { getTiles } from "./utils/http";
 import { Overlay } from "./components/overlay";
-import { NewTile } from "./components/newTile";
 
 export default function App() {
   const [tiles, setTiles] = useState([]);

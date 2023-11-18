@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
-import { deleteTile, getTasks } from "../utils/http";
-import { capitalise, formatDate } from "../utils/helpers";
+import { deleteTile, getTasks } from "../../utils/http";
+import { capitalise, formatDate } from "../../utils/helpers";
 import { useState } from "react";
-import trashCan from "../assets/trashCan.svg";
-import editIcon from "../assets/editIcon.svg";
+import trashCan from "../../assets/trashCan.svg";
+import editIcon from "../../assets/editIcon.svg";
+import { useDispatch } from "react-redux";
+import { updateEditTile, updateEditTileObject } from "./tileSlice";
 
 export const Tile = ({
   id = "null",
@@ -14,6 +16,7 @@ export const Tile = ({
   setTasks,
 }) => {
   const [tileHover, setTileHover] = useState(false);
+  const dispatch = useDispatch();
   const handleViewTasks = async () => {
     const getTasksResponse = await getTasks(id);
     handleOverlay(); //Opens the overlay when viewing tasks
@@ -22,8 +25,14 @@ export const Tile = ({
   };
 
   const handleEditTile = () => {
+    const tilePayload = { id, launchDate, status };
+    console.log(tilePayload);
     handleOverlay();
     setOverlaySection("edit_tile");
+    dispatch(updateEditTile(true));
+    dispatch(
+      updateEditTileObject({ type: "UPDATE_OBJECT", payload: tilePayload })
+    );
   };
 
   const handleDeleteTile = () => {

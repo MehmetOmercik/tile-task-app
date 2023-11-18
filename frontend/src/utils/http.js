@@ -18,11 +18,12 @@ export const getTiles = async (status = "live") => {
 // EDIT Tile
 export const editTile = async (tileID = null, data = null) => {
   const response = await axios({
-    method: "PATCH",
-    url: `/tiles/${tileID}`,
+    method: "PUT",
+    url: `/tiles/${tileID}/`,
     baseURL: backendUrl,
     data: { ...data },
   });
+  console.log(response.data);
   return await response.data;
 };
 
