@@ -3,7 +3,7 @@ import { updateEditTaskObject } from "./taskSlice";
 import { DropdownComponent } from "../dropdownComponent";
 import { postTask } from "../../utils/http";
 
-export const NewTask = () => {
+export const NewTask = ({ setOverlaySection }) => {
   const dispatch = useDispatch();
   const { editTask: editTaskBoolean, editTaskObject } = useSelector(
     (state) => state.task
@@ -45,7 +45,7 @@ export const NewTask = () => {
   //   );
   // };
 
-  const handleTaskSubmission = (e) => {
+  const handleTaskSubmission = async (e) => {
     const taskPayload = {
       // id: editTaskObject.id
       title: editTaskObject.title,
@@ -58,6 +58,10 @@ export const NewTask = () => {
     editTaskBoolean
       ? putTask(editTaskObject.id, taskPayload)
       : postTask(taskPayload);
+    // Doesnt update properly
+
+    // window.location.reload();
+    // await setOverlaySection("tasks");
   };
 
   return (
@@ -70,16 +74,18 @@ export const NewTask = () => {
       <form onSubmit={(e) => handleTaskSubmission(e)}>
         <label>Title</label>
         <input
+          maxLength="30"
           value={editTaskObject.title}
           onChange={(e) => handleProperty(e, "title")}
-          className="bg-gray-200 rounded-lg p-1 w-[97%] "
+          className="bg-gray-200 rounded-lg p-1 w-[97%]"
         ></input>
 
         <label htmlFor="">Description</label>
         <textarea
           value={editTaskObject.description}
           onChange={(e) => handleProperty(e, "description")}
-          className="resize-none bg-gray-200 rounded-lg w-[97%]"
+          className="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1"
+          maxLength="256"
         ></textarea>
 
         <label htmlFor="">Order</label>

@@ -10,12 +10,18 @@ export const Task = ({
   type = "null",
 }) => {
   return (
-    <section className="border border-gray-600 rounded-md w-[200px] p-10 text-center text-lg bg-white">
-      <p>Task {id}</p>
-      <p>{title}</p>
-      <p>{order}</p>
-      <p>{description}</p>
-      <p>{capitalise(type)}</p>
+    <section className="border border-gray-600 rounded-md w-[320px] text-center text-lg bg-white">
+      <div className="p-4">
+        <h1 className="text-2xl font-bold break-words">{title}</h1>
+      </div>
+      <div className="border"></div>
+      <h2 className="text-left m-2 font-semibold">Description</h2>
+      <p className="w-full resize-none break-words p-2">{description}</p>
+      <div className="flex justify-between p-2">
+        <p>{capitalise(type)}</p>
+        <p>Task ID: {id}</p>
+        <p>Order NO: {order}</p>
+      </div>
     </section>
   );
 };

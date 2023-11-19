@@ -111,7 +111,9 @@ export default function App() {
             overlaySection === "new_tile") && <NewTile />}
 
           {(overlaySection === "edit_task" ||
-            overlaySection === "new_task") && <NewTask />}
+            overlaySection === "new_task") && (
+            <NewTask setOverlaySection={setOverlaySection} />
+          )}
         </Overlay>
       </div>
     </>
