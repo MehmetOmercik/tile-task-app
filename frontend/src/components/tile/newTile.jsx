@@ -38,15 +38,16 @@ export const NewTile = () => {
   };
 
   const handleTileUpdateSubmisssion = async (e) => {
+    e.preventDefault();
     const tilePayload = {
       id: editTileObject.tileID,
       launch_date: editTileObject.launchDate,
       status: editTileObject.status,
     };
-    // e.preventDefault();
     editTileBoolean
       ? await putTile(editTileObject.tileID, tilePayload)
       : await postTile(tilePayload);
+    window.location.reload();
   };
 
   return (

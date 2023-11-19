@@ -45,6 +45,7 @@ export const NewTask = ({ setOverlaySection }) => {
   // };
 
   const handleTaskSubmission = async (e) => {
+    e.preventDefault();
     const taskPayload = {
       // id: editTaskObject.id
       title: editTaskObject.title,
@@ -60,7 +61,7 @@ export const NewTask = ({ setOverlaySection }) => {
       : await postTask(taskPayload);
 
     // ! Doesnt update properly
-    // window.location.reload();
+    window.location.reload();
     // setOverlaySection("tasks");
   };
 

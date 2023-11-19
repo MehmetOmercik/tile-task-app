@@ -15,6 +15,6 @@ open http://127.0.0.1:8000/
 # Start React frontend server
 echo -e "\nNow Starting Frontend" & sleep 2
 cd ../frontend
-npm run dev & open http://localhost:5173/
+npm run dev & open http://localhost:5000/
 
 exit 0
