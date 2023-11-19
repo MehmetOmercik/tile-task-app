@@ -18,7 +18,7 @@ export const DropdownComponent = ({ options, onSelect, defaultValue }) => {
         <option className="" value="">
           Select an option
         </option>
-        {options.map((option, index) => (
+        {options?.map((option, index) => (
           <option className="" key={index} value={option}>
             {option}
           </option>

@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateEditTaskObject } from "./taskSlice";
-import { DropdownComponent } from "../dropdownComponent";
+import { DropdownComponent } from "../dropdown";
 import { putTask, postTask } from "../../utils/http";
 
 export const NewTask = ({ setOverlaySection }) => {

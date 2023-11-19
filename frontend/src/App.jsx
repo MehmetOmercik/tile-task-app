@@ -17,14 +17,25 @@ export default function App() {
   const dispatch = useDispatch();
   const [tiles, setTiles] = useState([]);
   const [tileStatus, setTileStatus] = useState("live");
+  const [tileState, setTileState] = useState({
+    state: "loading",
+    statusMessage: "",
+  });
   const [tasks, setTasks] = useState([]);
   const [openOverlay, setOpenOverlay] = useState(false);
   const [overlaySection, setOverlaySection] = useState(null);
 
   useEffect(() => {
     const handleMount = async () => {
-      const response = await getTiles(tileStatus);
-      setTiles(response);
+      try {
+        setTileState({ state: "loading" });
+        const response = await getTiles(tileStatus);
+        setTiles(response);
+        setTileState({ state: "loaded" });
+      } catch (error) {
+        console.error("GET tiles request not working: ", error);
+        setTileState({ state: "error", statusMessage: error.message });
+      }
     };
     handleMount();
   }, [tileStatus]);
@@ -84,7 +95,7 @@ export default function App() {
         </button>
       </div>
       <div className="flex items-start justify-center gap-x-10 gap-y-4 m-4 flex-wrap">
-        {tiles.map((tile) => {
+        {tiles?.map((tile) => {
           return (
             <Tile
               key={tile.id}
@@ -97,13 +108,19 @@ export default function App() {
             />
           );
         })}
-        {tiles.length === 0 && (
+        {tileState?.state === "loaded" && tiles?.length === 0 && (
           <div className="text-lg mt-2 text-center">
             <h1 className="text-3xl font-semibold">
               No {tileStatus} tiles found{" "}
             </h1>
             <p>To add one, please click the + button on the top right</p>
           </div>
+        )}
+        {tileState?.state === "error" && (
+          <h1 className="text-red-600 text-3xl text-center">
+            Something is wrong with the tile http request, please check if the
+            backend is online: <p>{tileState?.statusMessage}</p>
+          </h1>
         )}
         <Overlay
           isOpen={openOverlay}

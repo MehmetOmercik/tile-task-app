@@ -9,4 +9,13 @@ export default defineConfig({
     strictPort: true,
     port: 5000,
   },
-})
+  test: {
+    globals: true,
+    environment: "jsdom",
+    css: true,
+    setupFiles: "./src/test/setup.js",
+    coverage: {
+      provider: "istanbul",
+    },
+  },
+});

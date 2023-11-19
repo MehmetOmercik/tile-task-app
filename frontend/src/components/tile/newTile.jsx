@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateEditTileObject } from "./tileSlice";
-import { DropdownComponent } from "../dropdownComponent";
+import { DropdownComponent } from "../dropdown";
 import { putTile, postTile } from "../../utils/http";
 import DateTimePicker from "react-datetime-picker";
 import "react-datetime-picker/dist/DateTimePicker.css";

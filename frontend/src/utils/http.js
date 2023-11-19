@@ -4,20 +4,16 @@ const backendUrl = "http://localhost:8000";
 
 // GET Tiles
 export const getTiles = async (status = "live") => {
-  try {
-    const response = await axios({
-      method: "GET",
-      url: "/tiles",
-      baseURL: backendUrl,
-      params: {
-        ordering: "launch_date",
-        status: status,
-      },
-    });
-    return await response.data;
-  } catch (error) {
-    console.error("error in http request: ", error);
-  }
+  const response = await axios({
+    method: "GET",
+    url: "/tiles",
+    baseURL: backendUrl,
+    params: {
+      ordering: "launch_date",
+      status: status,
+    },
+  });
+  return await response.data;
 };
 
 // POST Tile

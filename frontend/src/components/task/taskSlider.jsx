@@ -1,5 +1,6 @@
 import { Task } from "./task";
 import { useState } from "react";
+
 export const TaskSlider = ({ tasks, setOverlaySection }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
