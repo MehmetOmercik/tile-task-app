@@ -56,12 +56,12 @@ export const NewTask = ({ setOverlaySection }) => {
 
     // e.preventDefault();
     editTaskBoolean
-      ? putTask(editTaskObject.id, taskPayload)
-      : postTask(taskPayload);
+      ? await putTask(editTaskObject.id, taskPayload)
+      : await postTask(taskPayload);
 
     // ! Doesnt update properly
     // window.location.reload();
-    // await setOverlaySection("tasks");
+    // setOverlaySection("tasks");
   };
 
   return (

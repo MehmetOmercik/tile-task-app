@@ -37,7 +37,7 @@ export const NewTile = () => {
     );
   };
 
-  const handleTileUpdateSubmisssion = (e) => {
+  const handleTileUpdateSubmisssion = async (e) => {
     const tilePayload = {
       id: editTileObject.tileID,
       launch_date: editTileObject.launchDate,
@@ -45,8 +45,8 @@ export const NewTile = () => {
     };
     // e.preventDefault();
     editTileBoolean
-      ? putTile(editTileObject.tileID, tilePayload)
-      : postTile(tilePayload);
+      ? await putTile(editTileObject.tileID, tilePayload)
+      : await postTile(tilePayload);
   };
 
   return (

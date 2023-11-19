@@ -33,8 +33,8 @@ export const Task = ({
     );
   };
 
-  const handleDeleteTask = () => {
-    deleteTask(taskID);
+  const handleDeleteTask = async () => {
+    await deleteTask(taskID);
     window.location.reload();
   };
 

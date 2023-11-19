@@ -41,8 +41,8 @@ export const Tile = ({
     );
   };
 
-  const handleDeleteTile = () => {
-    deleteTile(tileID);
+  const handleDeleteTile = async () => {
+    await deleteTile(tileID);
     window.location.reload();
   };
 
