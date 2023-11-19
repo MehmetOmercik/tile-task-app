@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  backend:
+    container_name: tile_project_backend_container
+    build:
+      context: ./backend
+    ports:
+      - "8000:8000"
+    command: >
+      sh -c "python manage.py makemigrations &&
+            python manage.py migrate --fake-initial &&
+            python manage.py runserver 0.0.0.0:8000"
+
+  frontend:
+    container_name: tile_project_frontend_container
+    build:
+      context: ./frontend
+    ports:
+      - "5000:5000"
+    command: npm run dev
