@@ -1,6 +1,6 @@
 import { Task } from "./task";
 import { useState } from "react";
-export const TaskSlider = ({ tasks }) => {
+export const TaskSlider = ({ tasks, setOverlaySection }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrevious = () => {
@@ -34,11 +34,12 @@ export const TaskSlider = ({ tasks }) => {
 
           <Task
             key={`Task ${taskIndex?.id}`}
-            id={taskIndex?.id}
+            taskID={taskIndex?.id}
             title={taskIndex?.title}
             order={taskIndex?.order}
             description={taskIndex?.description}
             type={taskIndex?.type}
+            setOverlaySection={setOverlaySection}
           />
 
           {tasks.length > 1 && (

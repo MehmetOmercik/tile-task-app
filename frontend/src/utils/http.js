@@ -20,7 +20,7 @@ export const getTiles = async (status = "live") => {
   }
 };
 
-// CREATE Tile
+// POST Tile
 export const postTile = async (data = null) => {
   try {
     const response = await axios({
@@ -35,7 +35,7 @@ export const postTile = async (data = null) => {
   }
 };
 
-// EDIT Tile
+// PUT Tile
 export const putTile = async (tileID = null, data = null) => {
   try {
     const response = await axios({
@@ -82,7 +82,7 @@ export const getTasks = async (tile_id = null) => {
   }
 };
 
-// CREATE Task
+// POST Task
 export const postTask = async (data = null) => {
   try {
     const response = await axios({
@@ -90,6 +90,35 @@ export const postTask = async (data = null) => {
       url: "/tasks/",
       baseURL: backendUrl,
       data: { ...data },
+    });
+    return await response.data;
+  } catch (error) {
+    console.error("error in http request: ", error);
+  }
+};
+
+// PUT Task
+export const putTask = async (taskID = null, data = null) => {
+  try {
+    const response = await axios({
+      method: "PUT",
+      url: `/tasks/${taskID}/`,
+      baseURL: backendUrl,
+      data: { ...data },
+    });
+    return await response.data;
+  } catch (error) {
+    console.error("error in http request: ", error);
+  }
+};
+
+// DELETE TASK
+export const deleteTask = async (taskID = null) => {
+  try {
+    const response = await axios({
+      method: "DELETE",
+      url: `/tasks/${taskID}`,
+      baseURL: backendUrl,
     });
     return await response.data;
   } catch (error) {

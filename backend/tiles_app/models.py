@@ -59,9 +59,13 @@ class Task(models.Model):
         tile: One-to-many relationship with the tile model
     """
 
-    title = models.CharField(max_length=30, default="task title")
+    title = models.CharField(
+        max_length=30,
+        null=False,
+        blank=False,
+    )
     order = models.IntegerField()
-    description = models.TextField()
+    description = models.TextField(max_length=256)
     type = models.CharField(
         choices=TypeChoices.choices, default=TypeChoices.SURVEY, max_length=10
     )

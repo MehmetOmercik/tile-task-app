@@ -3,9 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const taskInitialState = {
   editTask: false,
   editTaskObject: {
+    id: 0,
     title: "",
     description: "",
-    order: 0,
+    order: 1,
     type: "survey",
     tile: 0,
   },

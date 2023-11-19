@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { updateEditTaskObject } from "./taskSlice";
 import { DropdownComponent } from "../dropdownComponent";
-import { postTask } from "../../utils/http";
+import { putTask, postTask } from "../../utils/http";
 
 export const NewTask = ({ setOverlaySection }) => {
   const dispatch = useDispatch();
@@ -9,7 +9,6 @@ export const NewTask = ({ setOverlaySection }) => {
     (state) => state.task
   );
   const { currentTileID } = useSelector((state) => state.tile);
-  console.log(editTaskObject);
 
   const handleProperty = (e, property) => {
     const value = e.target.value;
@@ -54,12 +53,13 @@ export const NewTask = ({ setOverlaySection }) => {
       type: editTaskObject.type,
       tile: currentTileID,
     };
+
     // e.preventDefault();
     editTaskBoolean
       ? putTask(editTaskObject.id, taskPayload)
       : postTask(taskPayload);
-    // Doesnt update properly
 
+    // ! Doesnt update properly
     // window.location.reload();
     // await setOverlaySection("tasks");
   };
@@ -68,7 +68,7 @@ export const NewTask = ({ setOverlaySection }) => {
     <section className="bg-white  w-[300px] rounded-xl p-4">
       <h1 className="text-2xl mb-5">
         {editTaskBoolean
-          ? `Update Task ${editTaskObject.id}`
+          ? `Update Task ${editTaskObject.id} for Tile ${currentTileID}`
           : `Create Task for Tile ${currentTileID}`}
       </h1>
       <form onSubmit={(e) => handleTaskSubmission(e)}>

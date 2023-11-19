@@ -35,7 +35,6 @@ export default function App() {
 
   const handleNewTile = () => {
     const isoStringDate = isoStringDateFunc();
-    console.log(isoStringDate);
     const emptyTilePayload = {
       launchDate: isoStringDate,
       status: "",
@@ -49,7 +48,6 @@ export default function App() {
   };
   const filterButtonStyle =
     "border p-4 border-red-700 bg-blue-400 rounded-2xl hover:bg-blue-200";
-  console.log(overlaySection);
   return (
     <>
       <button
@@ -99,13 +97,23 @@ export default function App() {
             />
           );
         })}
+        {tiles.length === 0 && (
+          <div className="text-lg mt-2 text-center">
+            <h1 className="text-3xl font-semibold">
+              No {tileStatus} tiles found{" "}
+            </h1>
+            <p>To add one, please click the + button on the top right</p>
+          </div>
+        )}
         <Overlay
           isOpen={openOverlay}
           onClose={handleOverlay}
           overlaySection={overlaySection}
           setOverlaySection={setOverlaySection}
         >
-          {overlaySection === "tasks" && <TaskSlider tasks={tasks} />}
+          {overlaySection === "tasks" && (
+            <TaskSlider tasks={tasks} setOverlaySection={setOverlaySection} />
+          )}
 
           {(overlaySection === "edit_tile" ||
             overlaySection === "new_tile") && <NewTile />}

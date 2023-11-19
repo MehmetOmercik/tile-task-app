@@ -1,9 +1,9 @@
+import trashCan from "../../assets/trashCan.svg";
+import editIcon from "../../assets/editIcon.svg";
 import PropTypes from "prop-types";
 import { deleteTile, getTasks } from "../../utils/http";
 import { capitalise, formatDate } from "../../utils/helpers";
 import { useState } from "react";
-import trashCan from "../../assets/trashCan.svg";
-import editIcon from "../../assets/editIcon.svg";
 import { useDispatch } from "react-redux";
 import {
   updateCurrentTileID,
