@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateEditTaskObject } from "./taskSlice";
 import { DropdownComponent } from "../dropdown";
 import { putTask, postTask } from "../../utils/http";
+import { useEffect, useState } from "react";
 
 export const NewTask = ({ setOverlaySection }) => {
   const dispatch = useDispatch();
@@ -9,6 +10,16 @@ export const NewTask = ({ setOverlaySection }) => {
     (state) => state.task
   );
   const { currentTileID } = useSelector((state) => state.tile);
+  const [taskValidation, setTaskValidation] = useState(false);
+
+  useEffect(() => {
+    setTaskValidation(
+      editTaskObject.title &&
+        editTaskObject.description &&
+        editTaskObject.type &&
+        editTaskObject.order
+    );
+  }, [editTaskObject]);
 
   const handleProperty = (e, property) => {
     const value = e.target.value;
@@ -23,7 +34,6 @@ export const NewTask = ({ setOverlaySection }) => {
   };
 
   const handleTypeOptionSelect = (selectedOption) => {
-    console.log(selectedOption);
     dispatch(
       updateEditTaskObject({
         type: "UPDATE_PROPERTY",
@@ -55,19 +65,18 @@ export const NewTask = ({ setOverlaySection }) => {
       tile: currentTileID,
     };
 
-    // e.preventDefault();
     editTaskBoolean
       ? await putTask(editTaskObject.id, taskPayload)
       : await postTask(taskPayload);
 
-    // ! Doesnt update properly
+    // TODO: Make going back to tasks work
     window.location.reload();
     // setOverlaySection("tasks");
   };
 
   return (
     <section className="bg-white  w-[300px] rounded-xl p-4">
-      <h1 className="text-2xl mb-5">
+      <h1 className="text-2xl mb-4">
         {editTaskBoolean
           ? `Update Task ${editTaskObject.id} for Tile ${currentTileID}`
           : `Create Task for Tile ${currentTileID}`}
@@ -78,14 +87,14 @@ export const NewTask = ({ setOverlaySection }) => {
           maxLength="30"
           value={editTaskObject.title}
           onChange={(e) => handleProperty(e, "title")}
-          className="bg-gray-200 rounded-lg p-1 w-[97%]"
+          className="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
         ></input>
 
         <label htmlFor="">Description</label>
         <textarea
           value={editTaskObject.description}
           onChange={(e) => handleProperty(e, "description")}
-          className="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1"
+          className="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1 mb-3"
           maxLength="256"
         ></textarea>
 
@@ -93,7 +102,7 @@ export const NewTask = ({ setOverlaySection }) => {
         <input
           value={editTaskObject.order}
           onChange={(e) => handleProperty(e, "order")}
-          className="bg-gray-200 rounded-lg p-1 w-[97%] "
+          className="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
         ></input>
 
         <label>Type</label>
@@ -110,8 +119,8 @@ export const NewTask = ({ setOverlaySection }) => {
         /> */}
         <button
           type="submit"
-          disabled={!editTaskObject.type}
-          className="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600"
+          disabled={!taskValidation}
+          className="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600 mb-1"
         >
           {editTaskBoolean ? "Update" : "Create"}
         </button>

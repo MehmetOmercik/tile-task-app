@@ -67,7 +67,7 @@ export default function App() {
       >
         +
       </button>
-      <div className="bg-blue-500 p-5 my-10 flex gap-x-10 justify-center items-center text-3xl">
+      <div className="bg-blue-500 p-5 my-10 flex flex-col gap-x-10 gap-y-3 justify-center items-center text-3xl lg:flex-row">
         <p className="mr-5">Status Filter: </p>
         <button
           onClick={() => {

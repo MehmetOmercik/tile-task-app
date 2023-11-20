@@ -13,7 +13,6 @@ export const NewTile = () => {
   const { editTile: editTileBoolean, editTileObject } = useSelector(
     (state) => state.tile
   );
-  console.log(editTileObject);
 
   const handleProperty = (e) => {
     const isoStringDate = isoStringDateFunc(e);
@@ -27,7 +26,6 @@ export const NewTile = () => {
   };
 
   const handleOptionSelect = (selectedOption) => {
-    console.log(selectedOption);
     dispatch(
       updateEditTileObject({
         type: "UPDATE_PROPERTY",
@@ -52,7 +50,7 @@ export const NewTile = () => {
 
   return (
     <section className="bg-white  w-[300px] rounded-xl p-4">
-      <h1 className="text-2xl mb-5">
+      <h1 className="text-2xl mb-3">
         {editTileBoolean
           ? `Update Tile ${editTileObject.tileID}`
           : "Create Tile"}
@@ -61,6 +59,7 @@ export const NewTile = () => {
         <label>Launch Date</label>
         <br />
         <DateTimePicker
+          className="mb-3"
           dateOnly="true"
           format="yy-MM-dd"
           value={new Date(editTileObject.launchDate)}

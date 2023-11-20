@@ -32,7 +32,6 @@ export const Tile = ({
 
   const handleEditTile = () => {
     const tilePayload = { tileID, launchDate, status };
-    console.log(tilePayload);
     handleOverlay();
     setOverlaySection("edit_tile");
     dispatch(updateEditTile(true));
