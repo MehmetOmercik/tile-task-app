@@ -14,20 +14,26 @@ exports[`Tile tests > Snapshot test 1`] = `
         <div
           class="h-full flex flex-col justify-evenly"
         >
-          <p>
+          <p
+            data-testid="tile-tileID-p"
+          >
             Tile 
             null
           </p>
           <div
-            class="border "
+            class="border"
           />
           <div
             class="flex justify-between px-4"
           >
-            <p>
+            <p
+              data-testid="tile-launchDate-p"
+            >
               undefined/undefined/null
             </p>
-            <p>
+            <p
+              data-testid="tile-status-p"
+            >
               Null
             </p>
           </div>
@@ -45,20 +51,26 @@ exports[`Tile tests > Snapshot test 1`] = `
       <div
         class="h-full flex flex-col justify-evenly"
       >
-        <p>
+        <p
+          data-testid="tile-tileID-p"
+        >
           Tile 
           null
         </p>
         <div
-          class="border "
+          class="border"
         />
         <div
           class="flex justify-between px-4"
         >
-          <p>
+          <p
+            data-testid="tile-launchDate-p"
+          >
             undefined/undefined/null
           </p>
-          <p>
+          <p
+            data-testid="tile-status-p"
+          >
             Null
           </p>
         </div>

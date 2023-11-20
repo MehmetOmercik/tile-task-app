@@ -44,15 +44,25 @@ export const Task = ({
       className="border border-gray-600 rounded-md w-[320px] text-center text-lg bg-white"
     >
       <div className="p-4">
-        <h1 className="text-2xl font-bold break-words">{title}</h1>
+        <h1
+          data-testid="task-title-h1"
+          className="text-2xl font-bold break-words"
+        >
+          {title}
+        </h1>
       </div>
       <div className="border"></div>
       <h2 className="text-left m-2 font-semibold">Description</h2>
-      <p className="w-full resize-none break-words p-2">{description}</p>
+      <p
+        data-testid="task-description-p"
+        className="w-full resize-none break-words p-2"
+      >
+        {description}
+      </p>
       <div className="flex justify-between p-2 font-semibold">
-        <p>{capitalise(type)}</p>
-        <p>Task ID: {taskID}</p>
-        <p>Order NO: {order}</p>
+        <p data-testid="task-type-p">{capitalise(type)}</p>
+        <p data-testid="task-taskID-p">Task ID: {taskID}</p>
+        <p data-testid="task-order-p">Order NO: {order}</p>
       </div>
       <div className="flex justify-between px-2 mb-6">
         <img
@@ -78,4 +88,5 @@ Task.propTypes = {
   order: PropTypes.number,
   description: PropTypes.string,
   type: PropTypes.string,
+  setOverlaySection: PropTypes.func,
 };

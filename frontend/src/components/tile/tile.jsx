@@ -92,11 +92,11 @@ export const Tile = ({
       )}
       {!tileHover && (
         <div className="h-full flex flex-col justify-evenly">
-          <p>Tile {tileID}</p>
-          <div className="border " />
+          <p data-testid="tile-tileID-p">Tile {tileID}</p>
+          <div className="border" />
           <div className="flex justify-between px-4">
-            <p>{formatDate(launchDate)}</p>
-            <p>{capitalise(status)}</p>
+            <p data-testid="tile-launchDate-p">{formatDate(launchDate)}</p>
+            <p data-testid="tile-status-p">{capitalise(status)}</p>
           </div>
         </div>
       )}

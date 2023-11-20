@@ -9,7 +9,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
         class="bg-white  w-[300px] rounded-xl p-4"
       >
         <h1
-          class="text-2xl mb-5"
+          class="text-2xl mb-3"
         >
           Create Tile
         </h1>
@@ -19,7 +19,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
           </label>
           <br />
           <div
-            class="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled"
+            class="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled mb-3"
           >
             <div
               class="react-datetime-picker__wrapper"
@@ -35,7 +35,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
                   step="60"
                   style="visibility: hidden; position: absolute; z-index: -999;"
                   type="datetime-local"
-                  value="2023-11-19T00:00"
+                  value="2023-11-20T00:00"
                 />
                 <input
                   autocomplete="off"
@@ -82,7 +82,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
                   name="day"
                   placeholder="--"
                   type="number"
-                  value="19"
+                  value="20"
                 />
               </div>
               <button
@@ -200,7 +200,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
       class="bg-white  w-[300px] rounded-xl p-4"
     >
       <h1
-        class="text-2xl mb-5"
+        class="text-2xl mb-3"
       >
         Create Tile
       </h1>
@@ -210,7 +210,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
         </label>
         <br />
         <div
-          class="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled"
+          class="react-datetime-picker react-datetime-picker--closed react-datetime-picker--enabled mb-3"
         >
           <div
             class="react-datetime-picker__wrapper"
@@ -226,7 +226,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
                 step="60"
                 style="visibility: hidden; position: absolute; z-index: -999;"
                 type="datetime-local"
-                value="2023-11-19T00:00"
+                value="2023-11-20T00:00"
               />
               <input
                 autocomplete="off"
@@ -273,7 +273,7 @@ exports[`New Tile tests > Snapshot test 1`] = `
                 name="day"
                 placeholder="--"
                 type="number"
-                value="19"
+                value="20"
               />
             </div>
             <button

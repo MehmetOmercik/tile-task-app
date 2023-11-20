@@ -9,7 +9,7 @@ exports[`New Task tests > Snapshot test 1`] = `
         class="bg-white  w-[300px] rounded-xl p-4"
       >
         <h1
-          class="text-2xl mb-5"
+          class="text-2xl mb-4"
         >
           Create Task for Tile 0
         </h1>
@@ -18,7 +18,7 @@ exports[`New Task tests > Snapshot test 1`] = `
             Title
           </label>
           <input
-            class="bg-gray-200 rounded-lg p-1 w-[97%]"
+            class="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
             maxlength="30"
             value=""
           />
@@ -28,7 +28,7 @@ exports[`New Task tests > Snapshot test 1`] = `
             Description
           </label>
           <textarea
-            class="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1"
+            class="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1 mb-3"
             maxlength="256"
           />
           <label
@@ -37,7 +37,7 @@ exports[`New Task tests > Snapshot test 1`] = `
             Order
           </label>
           <input
-            class="bg-gray-200 rounded-lg p-1 w-[97%] "
+            class="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
             value="1"
           />
           <label>
@@ -76,7 +76,8 @@ exports[`New Task tests > Snapshot test 1`] = `
             </select>
           </div>
           <button
-            class="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600"
+            class="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600 mb-1"
+            disabled=""
             type="submit"
           >
             Create
@@ -90,7 +91,7 @@ exports[`New Task tests > Snapshot test 1`] = `
       class="bg-white  w-[300px] rounded-xl p-4"
     >
       <h1
-        class="text-2xl mb-5"
+        class="text-2xl mb-4"
       >
         Create Task for Tile 0
       </h1>
@@ -99,7 +100,7 @@ exports[`New Task tests > Snapshot test 1`] = `
           Title
         </label>
         <input
-          class="bg-gray-200 rounded-lg p-1 w-[97%]"
+          class="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
           maxlength="30"
           value=""
         />
@@ -109,7 +110,7 @@ exports[`New Task tests > Snapshot test 1`] = `
           Description
         </label>
         <textarea
-          class="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1"
+          class="resize-none bg-gray-200 rounded-lg h-20 w-[97%] p-1 mb-3"
           maxlength="256"
         />
         <label
@@ -118,7 +119,7 @@ exports[`New Task tests > Snapshot test 1`] = `
           Order
         </label>
         <input
-          class="bg-gray-200 rounded-lg p-1 w-[97%] "
+          class="bg-gray-200 rounded-lg p-1 w-[97%] mb-3"
           value="1"
         />
         <label>
@@ -157,7 +158,8 @@ exports[`New Task tests > Snapshot test 1`] = `
           </select>
         </div>
         <button
-          class="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600"
+          class="bg-slate-400 rounded-lg p-2 text-lg hover:bg-slate-300 disabled:bg-red-600 mb-1"
+          disabled=""
           type="submit"
         >
           Create
